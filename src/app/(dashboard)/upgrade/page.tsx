@@ -201,35 +201,38 @@ export default function UpgradePage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                 <div className="text-center p-4 rounded-xl bg-zinc-50 border border-zinc-200">
                   <p className="font-medium mb-3 text-sm">WeChat Pay</p>
-                  <div className="w-48 h-48 mx-auto bg-emerald-50 rounded-xl border-2 border-emerald-200 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-4xl mb-2">💚</div>
-                      <p className="text-sm font-medium text-emerald-700">WeChat QR</p>
-                      <p className="text-xs text-emerald-500 mt-1">
-                        请扫描二维码支付
-                        <br />
-                        支付后截图联系客服
-                      </p>
-                    </div>
+                  <div className="w-48 h-48 mx-auto bg-white rounded-xl border-2 border-emerald-200 flex items-center justify-center overflow-hidden">
+                    {/* 替换为你的微信收款码图片 */}
+                    <img
+                      src="/wechat-qr.png"
+                      alt="WeChat Pay QR Code"
+                      className="w-full h-full object-contain"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                        (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="text-center p-4"><div class="text-4xl mb-2">💚</div><p class="text-sm font-medium text-emerald-700">WeChat QR</p><p class="text-xs text-emerald-500 mt-1">扫码支付<br/>截图联系客服</p></div>';
+                      }}
+                    />
                   </div>
                   <p className="text-xs text-zinc-400 mt-2">Open WeChat → Scan → Pay</p>
                 </div>
 
                 <div className="text-center p-4 rounded-xl bg-zinc-50 border border-zinc-200">
                   <p className="font-medium mb-3 text-sm">Alipay</p>
-                  <div className="w-48 h-48 mx-auto bg-blue-50 rounded-xl border-2 border-blue-200 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-4xl mb-2">💙</div>
-                      <p className="text-sm font-medium text-blue-700">Alipay QR</p>
-                      <p className="text-xs text-blue-500 mt-1">
-                        请扫描二维码支付
-                        <br />
-                        支付后截图联系客服
-                      </p>
-                    </div>
+                  <div className="w-48 h-48 mx-auto bg-white rounded-xl border-2 border-blue-200 flex items-center justify-center overflow-hidden">
+                    {/* 替换为你的支付宝收款码图片 */}
+                    <img
+                      src="/alipay-qr.png"
+                      alt="Alipay QR Code"
+                      className="w-full h-full object-contain"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                        (e.target as HTMLImageElement).parentElement!.innerHTML = '<div class="text-center p-4"><div class="text-4xl mb-2">💙</div><p class="text-sm font-medium text-blue-700">Alipay QR</p><p class="text-xs text-blue-500 mt-1">扫码支付<br/>截图联系客服</p></div>';
+                      }}
+                    />
                   </div>
                   <p className="text-xs text-zinc-400 mt-2">Open Alipay → Scan → Pay</p>
                 </div>
+              </div>
               </div>
 
               {/* Activation code + instructions */}
@@ -263,7 +266,6 @@ export default function UpgradePage() {
                 We'll activate your plan within 2 hours after payment confirmation
               </p>
             </div>
-          </div>
         )}
 
         {/* Self-service activation */}
