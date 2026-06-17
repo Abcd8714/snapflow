@@ -1,3 +1,5 @@
+// drizzle.config.ts — used only for local DB migrations (not needed at build time)
+// @ts-nocheck
 import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({
