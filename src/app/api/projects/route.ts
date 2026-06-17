@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { projects } from "@/lib/db/schema";
-import { eq, and } from "drizzle-orm";
+import { eq, and, desc } from "drizzle-orm";
 import { v4 as uuid } from "uuid";
 import { headers } from "next/headers";
 
@@ -16,7 +16,7 @@ export async function GET() {
     .select()
     .from(projects)
     .where(eq(projects.userId, session.user.id))
-    .orderBy(projects.createdAt, "desc");
+    .orderBy(desc(projects.createdAt));
 
   return NextResponse.json(list);
 }

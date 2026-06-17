@@ -83,9 +83,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useAuth() {
+export function useAuth(): AuthContextType {
   const ctx = useContext(AuthContext);
-  if (!ctx) return { user: { ...DEMO_USER }, isAuthenticated: true, isLoading: false };
+  if (!ctx) {
+    const fallback: AuthContextType = {
+      user: { ...DEMO_USER },
+      isAuthenticated: true,
+      isLoading: false,
+      signOut: () => {},
+      refreshCredits: () => {},
+      useCredit: () => false,
+    };
+    return fallback;
+  }
   return ctx;
 }
 
