@@ -202,7 +202,6 @@ export default function UpgradePage() {
                 <div className="text-center p-4 rounded-xl bg-zinc-50 border border-zinc-200">
                   <p className="font-medium mb-3 text-sm">WeChat Pay</p>
                   <div className="w-48 h-48 mx-auto bg-white rounded-xl border-2 border-emerald-200 flex items-center justify-center overflow-hidden">
-                    {/* 替换为你的微信收款码图片 */}
                     <img
                       src="/wechat-qr.png"
                       alt="WeChat Pay QR Code"
@@ -219,7 +218,6 @@ export default function UpgradePage() {
                 <div className="text-center p-4 rounded-xl bg-zinc-50 border border-zinc-200">
                   <p className="font-medium mb-3 text-sm">Alipay</p>
                   <div className="w-48 h-48 mx-auto bg-white rounded-xl border-2 border-blue-200 flex items-center justify-center overflow-hidden">
-                    {/* 替换为你的支付宝收款码图片 */}
                     <img
                       src="/alipay-qr.png"
                       alt="Alipay QR Code"
