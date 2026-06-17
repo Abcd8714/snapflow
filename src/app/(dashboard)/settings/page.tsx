@@ -103,7 +103,7 @@ export default function SettingsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {(["starter", "pro", "business"] as const).map((plan) => {
             const p = PLANS[plan];
-            const isCurrent = plan === currentPlan;
+            const isCurrent = plan === (currentPlan as string);
             return (
               <button
                 key={plan}
