@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { Suspense, useState, FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
@@ -155,6 +155,24 @@ function simulateGeneration(type: GenerationType, form: any): string {
 // ── End mock generation ──────────────────────────────────────────────────
 
 export default function GeneratePage() {
+  return (
+    <Suspense fallback={<GenerateSkeleton />}>
+      <GenerateContent />
+    </Suspense>
+  );
+}
+
+function GenerateSkeleton() {
+  return (
+    <div className="max-w-6xl mx-auto animate-pulse">
+      <div className="h-8 bg-zinc-200 rounded w-48 mb-2"></div>
+      <div className="h-4 bg-zinc-100 rounded w-64 mb-8"></div>
+      <div className="h-96 bg-zinc-100 rounded-2xl"></div>
+    </div>
+  );
+}
+
+function GenerateContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [genType, setGenType] = useState<GenerationType>(
